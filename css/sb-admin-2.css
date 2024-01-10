@@ -11382,6 +11382,12 @@ body.sidebar-toggled footer.sticky-footer {
   margin-right: 30px;
 }
 
+.container-fluid a{
+  transition: transform .5s ease;
+}
+.container-fluid a:hover{
+  transform: scale(1.1);
+}
 
 
 
