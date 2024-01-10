@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .order-status {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        #status-text {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        #timestamp {
+            color: #888;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        #progress-bar {
+            margin-top: 20px;
+            position: relative;
+        }
+
+        .step {
+            width: 20px;
+            height: 20px;
+            background-color: #ddd;
+            border-radius: 50%;
+            color: #666;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .step.complete {
+            background-color: #4caf50;
+            color: #fff;
+        }
+
+        .connector {
+            position: absolute;
+            background-color: #ddd;
+            height: 2px;
+            width: 15px;
+            top: 10px;
+            left: 20px;
+        }
+
+        .status-update {
+            text-align: left;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+    <title>Order Tracking</title>
+</head>
+<body>
+    <div class="order-status">
+        <h2>Order Tracking</h2>
+        <div class="status-update" id="status-update">
+            <div id="timestamp">Timestamp: -</div>
+            <div id="progress-bar">
+                <div class="step complete" id="step1">1</div>
+                <div class="connector"></div>
+                <div class="step" id="step2">2</div>
+                <div class="connector"></div>
+                <div class="step" id="step3">3</div>
+                <div class="connector"></div>
+                <div class="step" id="step4">4</div>
+                <div class="connector"></div>
+                <div class="step" id="step5">5</div>
+            </div>
+            <div id="status-text">Order Placed</div>
+        </div>
+        <button onclick="updateStatus()">Update Status</button>
+    </div>
+
+    <script>
+        let currentStatusIndex = 0;
+        const statuses = ["Order Placed", "Processing", "Shipped", "Out for Delivery", "Delivered"];
+
+        function updateStatus() {
+            if (currentStatusIndex < statuses.length - 1) {
+                currentStatusIndex++;
+                updateStatusText();
+                updateTimestamp();
+                appendStatusUpdate();
+                updateProgressBar();
+            }
+        }
+
+        function updateStatusText() {
+            const statusText = document.getElementById("status-text");
+            statusText.innerText = `Order Status: ${statuses[currentStatusIndex]}`;
+        }
+
+        function updateTimestamp() {
+            const timestamp = document.getElementById("timestamp");
+            const currentDate = new Date();
+            const formattedDate = currentDate.toLocaleString();
+            timestamp.innerText = `Timestamp: ${formattedDate}`;
+        }
+
+        function appendStatusUpdate() {
+            const statusUpdateContainer = document.getElementById("status-update");
+            const newUpdate = document.createElement("div");
+            const currentDate = new Date();
+            const formattedDate = currentDate.toLocaleString();
+            newUpdate.innerHTML = `<div class="status-update">${formattedDate} - ${statuses[currentStatusIndex]}</div>`;
+            statusUpdateContainer.appendChild(newUpdate);
+        }
+
+        function updateProgressBar() {
+            const progressBar = document.getElementById("progress-bar");
+            const steps = progressBar.getElementsByClassName("step");
+            const connectors = progressBar.getElementsByClassName("connector");
+
+            for (let i = 0; i < currentStatusIndex; i++) {
+                steps[i].classList.add("complete");
+                connectors[i].style.backgroundColor = "#4caf50";
+            }
+        }
+    </script>
+</body>
+</html>
