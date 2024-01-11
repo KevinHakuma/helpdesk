@@ -11369,14 +11369,25 @@ body.sidebar-toggled footer.sticky-footer {
   margin-top: 20px;
   padding-left: 30px;
   padding-right: 30px;
+  width: 50%;
+  height: auto;
 }
 
 .kendala-row {
   max-height: 10px;
-  width: 300px;
+  width: 260px;
   overflow-y: 40px;
 }
 
+.btn-aksi {
+  max-height: 10px;
+  width: 250px;
+  overflow-y: 40px;
+}
+
+.container-fluid table th td .btn{
+  padding: 20px;
+}
 
 .modal-body table{
   margin-right: 30px;
@@ -11388,6 +11399,80 @@ body.sidebar-toggled footer.sticky-footer {
 .container-fluid a:hover{
   transform: scale(1.1);
 }
+.container-fluid button{
+  margin-top: 10px;
+  height: 35px;
+  font-size: 15px;
+}
 
 
 
+
+/* modal request status  */
+.status {
+  display: flex;
+  margin-top: 60px;
+  justify-content: center;
+}
+
+.status li{
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* margin: 0 -82px; */
+}
+
+.status li .time-stamp{
+  font-size: 20px;
+  color: var(--blue);
+  margin: 0 40px;
+
+}
+
+.status li .text{
+  color: var(--blue);
+  font-weight: 600;
+  font-size: 14px;
+  text-align: center;
+  margin: 20px;
+}
+
+.status li .progress-req{
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: var(--gray);
+  margin: 12px  0;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  position: relative;
+  cursor: pointers;
+}
+.progress-req::after{
+  content: " ";
+  position: absolute;
+  width: 116px;
+  height: 5px;
+  background-color: var(--gray);
+  right: 30px;
+}
+.one::after{
+  width: 0;
+  height: 0;
+}
+.status li .progress-req p{
+  margin: 0;
+}
+.status li .fas{
+  display: none;
+}
+
+.status li .active{
+  background-color: var(--blue);
+}
+.status li .active::after{
+  background-color: #809bce;
+}
