@@ -11436,7 +11436,7 @@ body.sidebar-toggled footer.sticky-footer {
   font-weight: 600;
   font-size: 14px;
   text-align: center;
-  margin: 20px;
+  margin: 10px;
 }
 
 .status li .progress-req{
@@ -11454,10 +11454,10 @@ body.sidebar-toggled footer.sticky-footer {
 .progress-req::after{
   content: " ";
   position: absolute;
-  width: 116px;
+  width: 114px;
   height: 5px;
   background-color: var(--gray);
-  right: 30px;
+  right: 20px;
 }
 .one::after{
   width: 0;
@@ -11475,4 +11475,15 @@ body.sidebar-toggled footer.sticky-footer {
 }
 .status li .active::after{
   background-color: #809bce;
+}
+
+.status li .active p{
+  display: none;
+}
+
+.status li .active .fas{
+  display: flex;
+  font-size: 10px;
+  text-align: center;
+  justify-content: center;
 }
