@@ -11415,6 +11415,7 @@ body.sidebar-toggled footer.sticky-footer {
   margin: 20px 184px;
   justify-content: center;
   flex-direction: column;
+  padding: 0;
 }
 
 .status li{
